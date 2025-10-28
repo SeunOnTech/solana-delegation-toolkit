@@ -31,17 +31,29 @@ npm install @solana/web3.js @coral-xyz/anchor @solana/spl-token
 import { Connection, PublicKey, Keypair } from '@solana/web3.js';
 import { SmartAccountSDK } from '@seunontech/solana-delegation-toolkit';
 
-// Initialize the SDK
-const connection = new Connection('https://api.devnet.solana.com');
-const userKeypair = Keypair.generate();
-const sdk = new SmartAccountSDK(connection, userKeypair.publicKey);
+(async () => {
+  try {
+    // Initialize the connection and SDK
+    const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
+    const userKeypair = Keypair.generate();
 
-// Create a smart account
-const initTx = await sdk.initialize();
-initTx.feePayer = userKeypair.publicKey;
-initTx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
-initTx.sign(userKeypair);
-await connection.sendRawTransaction(initTx.serialize());
+    const sdk = new SmartAccountSDK(connection, userKeypair.publicKey);
+
+    // Create a smart account
+    const initTx = await sdk.initialize();
+    const { blockhash } = await connection.getLatestBlockhash();
+
+    initTx.feePayer = userKeypair.publicKey;
+    initTx.recentBlockhash = blockhash;
+    initTx.sign(userKeypair);
+
+    const signature = await connection.sendRawTransaction(initTx.serialize());
+    console.log('✅ Smart account created!');
+    console.log('Transaction Signature:', signature);
+  } catch (error) {
+    console.error('❌ Error initializing smart account:', error);
+  }
+})();
 ```
 
 ## Usage
