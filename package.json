@@ -1,0 +1,40 @@
+{
+  "name": "@seunontech/solana-delegation-toolkit",
+  "version": "1.0.0",
+  "description": "A client-side SDK for interacting with the Solana Smart Account program, enabling delegated transaction execution.",
+  "main": "dist/sdk.js",
+  "types": "dist/sdk.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist",
+    "src/idl"
+  ],
+  "keywords": [
+    "solana",
+    "sdk",
+    "smart account",
+    "delegation",
+    "account abstraction",
+    "blockchain"
+  ],
+  "author": "seunontech",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/solana-delegation-toolkit.git"
+  },
+  "packageManager": "pnpm@10.17.1",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.32.1",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

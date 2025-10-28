@@ -1,0 +1,366 @@
+{
+  "address": "73y8v8vVpDDStuVVTwuhUkcuaRpCpnUD5tg7hKcWYa5o",
+  "metadata": {
+    "name": "smart_account",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_delegate",
+      "docs": [
+        "Add delegate"
+      ],
+      "discriminator": [
+        3,
+        67,
+        128,
+        218,
+        69,
+        139,
+        53,
+        88
+      ],
+      "accounts": [
+        {
+          "name": "smart_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  109,
+                  97,
+                  114,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "smart_account.owner",
+                "account": "SmartAccount"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "delegate",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "execute",
+      "docs": [
+        "Execute delegated transaction"
+      ],
+      "discriminator": [
+        130,
+        221,
+        242,
+        154,
+        13,
+        193,
+        189,
+        29
+      ],
+      "accounts": [
+        {
+          "name": "smart_account",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  109,
+                  97,
+                  114,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "smart_account.owner",
+                "account": "SmartAccount"
+              }
+            ]
+          }
+        },
+        {
+          "name": "delegate",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "instruction_data",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "docs": [
+        "Initialize the smart account (vault)"
+      ],
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "smart_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  109,
+                  97,
+                  114,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "pause",
+      "docs": [
+        "Pause the smart account (emergency stop)"
+      ],
+      "discriminator": [
+        211,
+        22,
+        221,
+        251,
+        74,
+        121,
+        193,
+        47
+      ],
+      "accounts": [
+        {
+          "name": "smart_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  109,
+                  97,
+                  114,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "smart_account.owner",
+                "account": "SmartAccount"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "remove_delegate",
+      "docs": [
+        "Remove delegate"
+      ],
+      "discriminator": [
+        94,
+        37,
+        16,
+        59,
+        7,
+        84,
+        97,
+        211
+      ],
+      "accounts": [
+        {
+          "name": "smart_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  109,
+                  97,
+                  114,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "smart_account.owner",
+                "account": "SmartAccount"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "delegate",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "unpause",
+      "docs": [
+        "Unpause (resume operations)"
+      ],
+      "discriminator": [
+        169,
+        144,
+        4,
+        38,
+        10,
+        141,
+        188,
+        255
+      ],
+      "accounts": [
+        {
+          "name": "smart_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  109,
+                  97,
+                  114,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "smart_account.owner",
+                "account": "SmartAccount"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "signer": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "SmartAccount",
+      "discriminator": [
+        186,
+        83,
+        247,
+        224,
+        59,
+        95,
+        223,
+        112
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "Unauthorized operation."
+    },
+    {
+      "code": 6001,
+      "name": "Paused",
+      "msg": "Smart account is paused."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidInstruction",
+      "msg": "Invalid instruction data."
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientFunds",
+      "msg": "Insufficient funds."
+    }
+  ],
+  "types": [
+    {
+      "name": "SmartAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "delegates",
+            "type": {
+              "vec": "pubkey"
+            }
+          },
+          {
+            "name": "paused",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ]
+}
